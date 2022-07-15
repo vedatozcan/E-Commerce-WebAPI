@@ -1,0 +1,46 @@
+package com.EticaretApi.Service;
+
+import java.util.List;
+
+import com.EticaretApi.Entities.TemporaryBaskets;
+import com.EticaretApi.IService.ITemporaryBasketService;
+
+public class TemporaryBasketService implements ITemporaryBasketService{
+
+	@Override
+	public String Add(TemporaryBaskets data) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<TemporaryBaskets> GetAll(int CookieId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public TemporaryBaskets GetById(int Id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String Delete(int Id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String Update(TemporaryBaskets data) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean CookieControl(int CookieId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

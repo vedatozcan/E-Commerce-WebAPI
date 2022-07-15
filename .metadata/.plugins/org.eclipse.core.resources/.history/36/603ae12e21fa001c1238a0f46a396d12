@@ -1,0 +1,5 @@
+package com.EticaretApi.Repositories;
+
+public class OrderDetailsRepositories {
+
+}

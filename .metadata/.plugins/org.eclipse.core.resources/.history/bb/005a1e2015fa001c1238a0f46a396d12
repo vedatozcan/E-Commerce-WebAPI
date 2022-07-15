@@ -1,0 +1,70 @@
+package com.EticaretApi.Service;
+
+import java.util.List;
+import java.util.Random;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.EticaretApi.Entities.TemporaryBaskets;
+import com.EticaretApi.IService.ITemporaryBasketService;
+import com.EticaretApi.Repositories.TemporaryBasketRepositories;
+
+public class TemporaryBasketService implements ITemporaryBasketService{
+
+	
+	@Autowired
+	private TemporaryBasketRepositories repo;
+
+	@Override
+	public String Add(TemporaryBaskets data) {
+
+	 int BasketCookieId = 0;
+	 Random rnd = new Random();
+	 // Üretilen Sayı Temporary Basket  ve Order Tablosunda var ise Tekrar Sayı üretecek. Yok ise üretilen ile devam edilecek.
+	 do
+	 {
+		 BasketCookieId = rnd.nextInt(9000000); // 0  ile 9 Milyon arasında bir sayı üretecektir.
+	 }
+	 while((repo.BasketCookieControl(BasketCookieId) != null) || (repo.OrderCookieControl(BasketCookieId) != null));
+	 
+	 data.CookieBasketId = BasketCookieId; // Üretileni Veritabanına göndermek üzere Property'e atamasını gerçekleştiriyoruz.
+	 
+	 try
+		{
+			repo.save(data); 
+			return "İşlem Başarlı Bir Şekilde Gerçekleşti";
+		}
+		catch(Exception e){
+			return e.getMessage();
+		}
+	}
+
+	@Override
+	public List<TemporaryBaskets> GetAll(int CookieId) {
+		return repo.GetAllList(CookieId);
+	}
+
+	@Override
+	public TemporaryBaskets GetById(int Id) {
+		return repo.findById(Id).orElse(null);
+	}
+
+	@Override
+	public String Delete(int Id) {
+		try
+		{
+			repo.deleteById(Id);
+			return "İşlem Başarlı Bir Şekilde Gerçekleşti";
+		}
+		catch(Exception e){
+			return e.getMessage();
+		}
+	}
+
+	@Override
+	public String Update(TemporaryBaskets data) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+}

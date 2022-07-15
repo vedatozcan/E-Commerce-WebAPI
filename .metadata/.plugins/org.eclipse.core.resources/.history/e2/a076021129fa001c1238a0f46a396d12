@@ -1,0 +1,36 @@
+package com.EticaretApi.Controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.EticaretApi.Entities.Customers;
+import com.EticaretApi.Entities.Orders;
+import com.EticaretApi.Service.OrderService;
+
+@RestController
+@RequestMapping("api")
+public class OrdersController {
+
+	@Autowired
+	private OrderService service;
+	
+	@GetMapping("/orders/{id}")
+	public Orders GetAll2(){	
+		return service.FullList(id);		
+	}
+	
+	@GetMapping("/orders/{id}")
+	public Orders GetAll(@PathVariable int id){	
+		return service.FullList(id);		
+	}
+	
+	@PostMapping("/orders")
+	public String Create(@RequestBody Orders data){	
+		return service.Add(data);		
+	}
+}

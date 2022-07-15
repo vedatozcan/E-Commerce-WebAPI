@@ -1,0 +1,9 @@
+package com.EticaretApi.Repositories;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.EticaretApi.Entities.OrderDetails;
+
+public interface OrderDetailsRepositories  extends JpaRepository<OrderDetails,Integer>{
+
+}

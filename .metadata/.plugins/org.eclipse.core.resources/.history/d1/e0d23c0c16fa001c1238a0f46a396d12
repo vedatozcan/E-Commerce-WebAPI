@@ -1,0 +1,31 @@
+package com.EticaretApi.Controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.EticaretApi.Entities.Customers;
+import com.EticaretApi.Service.CustomersService;
+
+@RestController
+public class CustomersController {
+
+	@Autowired
+	private CustomersService service;
+	
+	
+	@GetMapping("/GetAll")
+	public List<Customers> GetAll(){
+		
+		return service.GetAll();		
+	}
+	
+	@PostMapping("/Create")
+	public String Create(@RequestBody Customers){		
+		return service.GetAll();		
+	}
+	
+}

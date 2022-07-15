@@ -1,0 +1,10 @@
+package com.EticaretApi.IService;
+
+import com.EticaretApi.Entities.Orders;
+
+public interface IOrderDetailsService {
+
+    public String Add(Orders data);
+		
+	public String Update(Orders data);		
+}
